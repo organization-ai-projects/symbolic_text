@@ -23,7 +23,7 @@ fn visit_ron_files(dir: &Path) {
                 // Génère le .bin dans le dossier bin/ à côté du dossier ron/
                 let bin_path = if let Some(parent) = path.parent() {
                     // Si le dossier parent s'appelle 'ron', on place bin/ à côté
-                    if parent.file_name().map_or(false, |n| n == "ron") {
+                    if parent.file_name().is_some_and(|n| n == "ron") {
                         if let Some(grandparent) = parent.parent() {
                             let bin_dir = grandparent.join("bin");
                             if !bin_dir.exists() {
