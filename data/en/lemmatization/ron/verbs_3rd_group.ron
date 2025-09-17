@@ -1,0 +1,11 @@
+// Lemmas for English verbs (3rd group)
+(
+  entries: [
+    (lemma:"take", forms:["take","takes","took","taken","taking"]),
+    (lemma:"come", forms:["come","comes","came","coming"]),
+    (lemma:"go", forms:["go","goes","went","gone","going"]),
+    (lemma:"see", forms:["see","sees","saw","seen","seeing"]),
+    (lemma:"give", forms:["give","gives","gave","given","giving"]),
+    (lemma:"find", forms:["find","finds","found","finding"]),
+  ]
+)

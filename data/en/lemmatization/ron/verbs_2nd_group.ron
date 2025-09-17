@@ -1,0 +1,10 @@
+// Lemmas for English verbs (2nd group)
+(
+  entries: [
+    (lemma:"finish", forms:["finish","finishes","finished","finishing"]),
+    (lemma:"grow", forms:["grow","grows","grew","grown","growing"]),
+    (lemma:"learn", forms:["learn","learns","learned","learning"]),
+    (lemma:"change", forms:["change","changes","changed","changing"]),
+    (lemma:"move", forms:["move","moves","moved","moving"]),
+  ]
+)

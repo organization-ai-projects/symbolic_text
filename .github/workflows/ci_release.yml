@@ -1,0 +1,30 @@
+name: Release symbolic_text
+
+on:
+  push:
+    tags:
+      - "symbolic_text-v*"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: crates/symbolic_text
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+      - name: Build
+        run: cargo build --release
+      - name: Publish
+        run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Release
+        uses: crate-ci/cargo-release-action@v2
+        with:
+          args: release --workspace --no-confirm

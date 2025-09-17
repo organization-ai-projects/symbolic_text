@@ -1,0 +1,33 @@
+# Configuration pour cargo-release
+# Place ce fichier à la racine de crates/symbolic_text
+
+[release]
+targets = ["symbolic_text"]
+consolidate-commits = true
+sign-commit = false
+sign-tag = false
+push-remote = "origin"
+pre-release-commit-message = "chore(release): prepare {{version}}"
+post-release-commit-message = "chore(release): release {{version}}"
+tag-message = "release {{crate_name}} v{{version}}"
+
+# Génère le changelog automatiquement
+changelog = true
+changelog-path = "CHANGELOG.md"
+changelog-sections = [
+    { "feat" = "Nouvelles fonctionnalités" },
+    { "fix" = "Corrections" },
+    { "chore" = "Maintenance" },
+    { "docs" = "Documentation" },
+    { "refactor" = "Refactoring" },
+    { "test" = "Tests" }
+]
+
+# Publie uniquement le crate courant
+publish = true
+
+# Ne touche qu'à Cargo.toml du crate courant
+update-dependencies = false
+
+# Pour crates.io
+registry = "https://crates.io"

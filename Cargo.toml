@@ -1,0 +1,29 @@
+[package]
+name = "symbolic_text"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/organization-ai-projects/symbolic_text"
+documentation = "https://docs.rs/symbolic_text"
+homepage = "https://github.com/organization-ai-projects/symbolic_text"
+description = "Tokenizer, lemmatizer et normalizer universel pour NLP/IA en Rust. Extraction typée et modulaire de tous les motifs linguistiques et web."
+keywords = ["nlp", "tokenizer", "lemmatizer", "normalizer", "rust"]
+categories = ["text-processing", "parsing", "nlp", "ai"]
+
+[lib]
+name = "symbolic_text"
+path = "src/lib.rs"
+
+[dependencies]
+unicode-normalization = "0.1"
+rust-stemmers = "1.2"
+bincode = "2"
+ron = "0.8"
+reqwest = { version = "0.11", features = ["blocking", "json"] }
+tokio = { version = "1", features = ["full"] }
+flate2 = "1.0"
+tar = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+scraper = "0.18"
+regex = "1.11.2"
+once_cell = "1.21.3"
+unicode-segmentation = "1.10"

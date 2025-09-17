@@ -1,0 +1,15 @@
+// Lemmas for English verbs (1st group)
+(
+  entries: [
+    (lemma:"work", forms:["work","works","worked","working"]),
+    (lemma:"play", forms:["play","plays","played","playing"]),
+    (lemma:"call", forms:["call","calls","called","calling"]),
+    (lemma:"love", forms:["love","loves","loved","loving"]),
+    (lemma:"talk", forms:["talk","talks","talked","talking"]),
+    (lemma:"walk", forms:["walk","walks","walked","walking"]),
+    (lemma:"look", forms:["look","looks","looked","looking"]),
+    (lemma:"cook", forms:["cook","cooks","cooked","cooking"]),
+    (lemma:"open", forms:["open","opens","opened","opening"]),
+    (lemma:"close", forms:["close","closes","closed","closing"]),
+  ]
+)
