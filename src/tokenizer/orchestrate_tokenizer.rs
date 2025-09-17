@@ -1,7 +1,7 @@
 //! Module principal du tokenizer : orchestre tous les extracteurs et la segmentation
 
-use crate::tokenizer::extractors::*;
 use crate::tokenizer::token::Token;
+use crate::tokenizer::{extractors::*, TokenStream};
 
 /// Orchestrateur principal : applique tous les extracteurs, résout les overlaps, segmente le reste
 pub fn tokenize(input: &str) -> Vec<Token> {
@@ -23,8 +23,31 @@ pub fn tokenize(input: &str) -> Vec<Token> {
             cur_end = e;
         }
     }
-    // Segmentation du reste (à compléter avec une logique classique ou Unicode)
-    // ...
-    // Retourne les tokens extraits
-    packed.into_iter().map(|(_, _, tok)| tok).collect()
+    // Bufferisation uniquement des gaps non extraits
+    let mut tokens = packed
+        .iter()
+        .map(|(_, _, tok)| tok.clone())
+        .collect::<Vec<_>>();
+    let mut last_end = 0;
+    for (start, end, _) in &packed {
+        if last_end < *start {
+            let gap = &input[last_end..*start];
+            if !gap.trim().is_empty() {
+                let mut stream = TokenStream::new();
+                stream.push_chunk(gap);
+                tokens.extend(stream.flush());
+            }
+        }
+        last_end = *end;
+    }
+    // Traiter le gap final si besoin
+    if last_end < input.len() {
+        let gap = &input[last_end..];
+        if !gap.trim().is_empty() {
+            let mut stream = TokenStream::new();
+            stream.push_chunk(gap);
+            tokens.extend(stream.flush());
+        }
+    }
+    tokens
 }

@@ -1,6 +1,6 @@
 // Lemmas for French verbs (1st group)
 (
-    "écris": "écrire",
-    "écrit": "écrire",
-    "écrire": "écrire"
+    entries: [
+        (lemma:"écrire", forms:["écris","écrit","écrire"])
+    ]
 )

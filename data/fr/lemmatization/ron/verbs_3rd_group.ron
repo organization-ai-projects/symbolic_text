@@ -1,9 +1,7 @@
 // Lemmas for French verbs (3rd group)
 (
-    "prends": "prendre",
-    "prend": "prendre",
-    "prendre": "prendre",
-    "viens": "venir",
-    "vient": "venir",
-    "venir": "venir"
+    entries: [
+        (lemma:"prendre", forms:["prends","prend","prendre"]),
+        (lemma:"venir", forms:["viens","vient","venir"])
+    ]
 )

@@ -1,5 +1,6 @@
 // Lemmas for English verbs (other)
 (
-    "returns": "return",
-    "return": "return"
+    entries: [
+        (lemma:"return", forms:["returns","return"])
+    ]
 )

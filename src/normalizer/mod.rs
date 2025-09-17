@@ -1,7 +1,7 @@
 pub mod normalized_token;
 pub mod normalize_opts;
-pub mod normalizer;
+pub mod orchestrate_normalizer;
 
 pub use normalized_token::NormalizedToken;
 pub use normalize_opts::NormalizerOpts;
-pub use normalizer::*;
+pub use orchestrate_normalizer::*;

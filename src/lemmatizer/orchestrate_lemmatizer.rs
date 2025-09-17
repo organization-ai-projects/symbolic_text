@@ -4,11 +4,11 @@ use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
 
-use crate::format_converter::ensure_bin_up_to_date;
-use crate::tokenizer::TokenKind;
+use crate::format_converter::{ensure_bin_up_to_date, ron_to_bin};
 use crate::lemmatizer::LemmaEntries;
-use crate::lemmatizer::LemmatizerConfig;
 use crate::lemmatizer::LemmatizedToken;
+use crate::lemmatizer::LemmatizerConfig;
+use crate::tokenizer::TokenKind;
 
 /// Chargement générique des lemmes pour n'importe quelle langue
 fn load_lemmatization_forms(lang: &str) -> HashMap<String, String> {
@@ -18,9 +18,9 @@ fn load_lemmatization_forms(lang: &str) -> HashMap<String, String> {
     if let Ok(entries) = fs::read_dir(dir) {
         for entry in entries.flatten() {
             let path = entry.path();
-            if path.extension().map_or(false, |ext| ext == "ron") {
+            if path.extension().is_some_and(|ext| ext == "ron") {
                 let bin_path = path.with_extension("bin");
-                let _ = ensure_bin_up_to_date(&path, &bin_path);
+                let _ = ensure_bin_up_to_date(&path, &bin_path, |r, b| ron_to_bin::<LemmaEntries>(r, b));
                 if let Ok(bin_content) = fs::read(&bin_path) {
                     if let Ok((lemma_entries, _)) = bincode::decode_from_slice::<LemmaEntries, _>(
                         &bin_content,
