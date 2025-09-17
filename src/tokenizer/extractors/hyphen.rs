@@ -1,6 +1,6 @@
 //! Extracteur pour les tirets et traits d’union
-use crate::tokenizer::TokenKind;
 use crate::tokenizer::token::Token;
+use crate::tokenizer::TokenKind;
 
 /// Extrait les tirets isolés ou non capturés
 pub fn extract_hyphens(input: &str, offset: usize) -> Vec<(usize, usize, Token)> {

@@ -1,6 +1,6 @@
 //! Extracteur pour les délimiteurs de groupe et guillemets (quotes)
-use crate::tokenizer::TokenKind;
 use crate::tokenizer::token::Token;
+use crate::tokenizer::TokenKind;
 
 /// Extrait les délimiteurs de groupe et guillemets non capturés par les autres extracteurs
 pub fn extract_group_delimiters(input: &str, offset: usize) -> Vec<(usize, usize, Token)> {

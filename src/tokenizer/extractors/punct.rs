@@ -1,6 +1,6 @@
 //! Extracteur pour la ponctuation officielle (ISO)
-use crate::tokenizer::TokenKind;
 use crate::tokenizer::token::Token;
+use crate::tokenizer::TokenKind;
 
 /// Extrait la ponctuation officielle non capturée par les autres extracteurs
 pub fn extract_punctuation(input: &str, offset: usize) -> Vec<(usize, usize, Token)> {

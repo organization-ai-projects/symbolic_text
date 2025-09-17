@@ -35,7 +35,9 @@ fn visit_ron_files(dir: &Path) {
                     let file_name = path.file_stem().unwrap_or_default();
                     path.with_file_name(file_name).with_extension("bin")
                 };
-                match ensure_bin_up_to_date(&path, &bin_path, |r, b| ron_to_bin::<LemmaEntries>(r, b)) {
+                match ensure_bin_up_to_date(&path, &bin_path, |r, b| {
+                    ron_to_bin::<LemmaEntries>(r, b)
+                }) {
                     Ok(true) => println!("Conversion réussie: {:?} -> {:?}", path, bin_path),
                     Ok(false) => println!("Aucun changement: {:?} -> {:?}", path, bin_path),
                     Err(e) => {

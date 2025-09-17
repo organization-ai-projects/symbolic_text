@@ -20,7 +20,9 @@ fn load_lemmatization_forms(lang: &str) -> HashMap<String, String> {
             let path = entry.path();
             if path.extension().is_some_and(|ext| ext == "ron") {
                 let bin_path = path.with_extension("bin");
-                let _ = ensure_bin_up_to_date(&path, &bin_path, |r, b| ron_to_bin::<LemmaEntries>(r, b));
+                let _ = ensure_bin_up_to_date(&path, &bin_path, |r, b| {
+                    ron_to_bin::<LemmaEntries>(r, b)
+                });
                 if let Ok(bin_content) = fs::read(&bin_path) {
                     if let Ok((lemma_entries, _)) = bincode::decode_from_slice::<LemmaEntries, _>(
                         &bin_content,

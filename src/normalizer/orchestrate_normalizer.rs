@@ -1,6 +1,9 @@
 use unicode_normalization::{char::is_combining_mark, UnicodeNormalization};
 
-use crate::{normalizer::{NormalizedToken, NormalizerOpts}, tokenizer::TokenKind};
+use crate::{
+    normalizer::{NormalizedToken, NormalizerOpts},
+    tokenizer::TokenKind,
+};
 
 /// API pratique (options par défaut).
 pub fn normalize(tokens: &[String]) -> Vec<NormalizedToken> {
