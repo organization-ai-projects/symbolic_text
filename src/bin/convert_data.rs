@@ -21,15 +21,26 @@ fn visit_ron_files(dir: &Path) {
                 visit_ron_files(&path);
             } else if path.extension().is_some_and(|ext| ext == "ron") {
                 // Génère le .bin dans le dossier bin/ à côté du dossier ron/
-                let bin_path = if let (Some(parent), Some(grandparent)) =
-                    (path.parent(), path.parent().and_then(|p| p.parent()))
-                {
-                    let bin_dir = grandparent.join("bin");
-                    if !bin_dir.exists() {
-                        let _ = fs::create_dir_all(&bin_dir);
+                let bin_path = if let Some(parent) = path.parent() {
+                    // Si le dossier parent s'appelle 'ron', on place bin/ à côté
+                    if parent.file_name().map_or(false, |n| n == "ron") {
+                        if let Some(grandparent) = parent.parent() {
+                            let bin_dir = grandparent.join("bin");
+                            if !bin_dir.exists() {
+                                let _ = fs::create_dir_all(&bin_dir);
+                            }
+                            let file_name = path.file_stem().unwrap_or_default();
+                            bin_dir.join(file_name).with_extension("bin")
+                        } else {
+                            // fallback : place le .bin à côté du .ron
+                            let file_name = path.file_stem().unwrap_or_default();
+                            path.with_file_name(file_name).with_extension("bin")
+                        }
+                    } else {
+                        // fallback : place le .bin à côté du .ron
+                        let file_name = path.file_stem().unwrap_or_default();
+                        path.with_file_name(file_name).with_extension("bin")
                     }
-                    let file_name = path.file_stem().unwrap_or_default();
-                    bin_dir.join(file_name).with_extension("bin")
                 } else {
                     // fallback : place le .bin à côté du .ron
                     let file_name = path.file_stem().unwrap_or_default();
