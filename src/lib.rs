@@ -1,4 +1,9 @@
 pub mod format_converter;
 pub mod lemmatizer;
 pub mod normalizer;
+pub mod patterns_detection;
+pub mod text_processing;
 pub mod tokenizer;
+pub mod types;
+pub use types::TokenKind;
+pub mod validator;

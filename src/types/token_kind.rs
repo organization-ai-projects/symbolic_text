@@ -1,5 +1,3 @@
-// src/token_kind.rs
-
 /// Catégories de tokens communes à la normalisation et la lemmatisation.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum TokenKind {
