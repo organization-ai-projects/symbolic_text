@@ -1,5 +1,6 @@
 [package]
 name = "symbolic_text"
+license = "MIT OR Apache-2.0"
 version = "0.1.0"
 edition = "2021"
 repository = "https://github.com/organization-ai-projects/symbolic_text"
@@ -8,6 +9,7 @@ homepage = "https://github.com/organization-ai-projects/symbolic_text"
 description = "Tokenizer, lemmatizer et normalizer universel pour NLP/IA en Rust. Extraction typée et modulaire de tous les motifs linguistiques et web."
 keywords = ["nlp", "tokenizer", "lemmatizer", "normalizer", "rust"]
 categories = ["text-processing", "parsing", "nlp", "ai"]
+exclude = ["*.ron"]
 
 [lib]
 name = "symbolic_text"
@@ -27,3 +29,7 @@ scraper = "0.18"
 regex = "1.11.2"
 once_cell = "1.21.3"
 unicode-segmentation = "1.10"
+
+[build-dependencies]
+ron = "0.8"
+bincode = "2"

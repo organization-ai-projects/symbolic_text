@@ -2,8 +2,8 @@
 use once_cell::sync::Lazy;
 use regex::Regex;
 
-use crate::tokenizer::TokenKind;
 use crate::tokenizer::token::Token;
+use crate::tokenizer::TokenKind;
 
 pub fn extract_urls(input: &str) -> Vec<(usize, usize, Token)> {
     static RE: Lazy<Regex> =

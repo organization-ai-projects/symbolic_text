@@ -1,6 +1,6 @@
 // Lemmas for English verbs (irregular)
 (
-    "writes": "write",
-    "wrote": "write",
-    "write": "write"
+    entries: [
+        (lemma:"write", forms:["writes","wrote","write"])
+    ]
 )

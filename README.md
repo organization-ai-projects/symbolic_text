@@ -1,10 +1,10 @@
 # Symbolic Text
 
-Tokenizer, lemmatizer et normalizer universel pour NLP/IA en Rust.
+Universal tokenizer, lemmatizer and normalizer for NLP and AI in Rust.
 
 ## Installation
 
-Ajoutez à votre Cargo.toml :
+Add to your Cargo.toml:
 ```toml
 symbolic_text = "0.1"
 ```
@@ -13,21 +13,25 @@ symbolic_text = "0.1"
 
 ```rust
 use symbolic_text::tokenizer::tokenize;
-let tokens = tokenize("Ceci est un exemple !");
+let tokens = tokenize("This is an example!");
 for t in tokens {
     println!("{}: {:?}", t.text, t.kind);
 }
 ```
 
-## Fonctionnalités
-- Tokenization modulaire et typée
-- Extraction URL, email, hashtag, emoji, abbr, nombre, ponctuation, groupes, tirets
-- Normalisation et lemmatisation
-- Extensible et prêt pour l’open source
+## Features
+- Modular and strongly-typed tokenization
+- Extraction of URL, email, hashtag, emoji, abbreviation, number, punctuation, groups, hyphens
+- Normalization and lemmatization
+- Extensible and open-source ready
+
+
+
 
 ## Documentation
+- [French documentation](./docs/fr/README_fr.md)
 - [Crates.io](https://crates.io/crates/symbolic_text)
 - [GitHub](https://github.com/organization-ai-projects/symbolic_text)
 
-## Licence
+## License
 MIT

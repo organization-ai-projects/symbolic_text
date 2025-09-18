@@ -1,5 +1,6 @@
 // Lemmas for French verbs (other)
 (
-    "retourne": "retourner",
-    "retourner": "retourner"
+    entries: [
+        (lemma:"retourner", forms:["retourne","retourner"])
+    ]
 )

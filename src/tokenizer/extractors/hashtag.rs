@@ -2,8 +2,8 @@
 use once_cell::sync::Lazy;
 use regex::Regex;
 
-use crate::tokenizer::TokenKind;
 use crate::tokenizer::token::Token;
+use crate::tokenizer::TokenKind;
 
 pub fn extract_hashtags(input: &str) -> Vec<(usize, usize, Token)> {
     static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"#[\w_]+").unwrap());

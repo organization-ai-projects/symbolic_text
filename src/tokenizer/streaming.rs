@@ -1,24 +1,29 @@
 //! API streaming et gestion d’état pour le tokenizer
 use crate::tokenizer::token::Token;
+use crate::tokenizer::tokenize;
 
-pub struct Tokenizer {
-    // À compléter avec les états nécessaires
+/// Structure minimale pour gérer le flux et bufferiser les chunks
+#[derive(Default)]
+pub struct TokenStream {
+    buffer: String,
 }
 
-impl Tokenizer {
+impl TokenStream {
     pub fn new() -> Self {
-        Tokenizer {}
+        Self {
+            buffer: String::new(),
+        }
     }
-    pub fn tokenize(&mut self, input: &str) -> Vec<Token> {
-        // À compléter avec la logique de segmentation
-        vec![]
+
+    /// Ajoute un chunk au buffer
+    pub fn push_chunk(&mut self, chunk: &str) {
+        self.buffer.push_str(chunk);
     }
-    pub fn tokenize_stream<'a>(
-        &'a mut self,
-        chunk: &'a str,
-        is_last: bool,
-    ) -> impl Iterator<Item = Token> + 'a {
-        // À compléter pour le streaming
-        std::iter::empty()
+
+    /// Retourne les tokens du buffer courant (en utilisant le vrai tokenizer)
+    pub fn flush(&mut self) -> Vec<Token> {
+        let tokens = tokenize(&self.buffer);
+        self.buffer.clear();
+        tokens
     }
 }
